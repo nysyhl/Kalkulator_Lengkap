@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kalkulator Sains ✦</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="calc-wrap">
+
+  <div class="calc-title">✦ Kalkulator Sains ✦</div>
+
+  <!-- Display -->
+  <div class="display-wrap">
+    <div class="deg-indicator" id="degMode">DEG</div>
+    <div class="display-expr" id="expr"></div>
+    <div class="display-main" id="display">0</div>
+  </div>
+
+  <!-- Mode Row -->
+  <div class="mode-row">
+    <button class="mode-btn active" id="btn-std" onclick="setMode('std')">Standard</button>
+    <button class="mode-btn" id="btn-sci" onclick="setMode('sci')">Scientific</button>
+    <button class="mode-btn" id="btn-deg" onclick="toggleDeg()">DEG</button>
+    <button class="mode-btn" onclick="clearHistory()">Hapus Log</button>
+  </div>
+
+  <!-- Scientific Panel -->
+  <div id="sci-panel">
+    <div class="sci-section-label">Trigonometri</div>
+    <div class="grid grid-5 mb">
+      <button class="btn sci-fn" onclick="insertFunc('sin')">sin</button>
+      <button class="btn sci-fn" onclick="insertFunc('cos')">cos</button>
+      <button class="btn sci-fn" onclick="insertFunc('tan')">tan</button>
+      <button class="btn sci-fn" onclick="insertFunc('asin')">sin⁻¹</button>
+      <button class="btn sci-fn" onclick="insertFunc('acos')">cos⁻¹</button>
+      <button class="btn sci-fn" onclick="insertFunc('atan')">tan⁻¹</button>
+      <button class="btn sci-fn" onclick="insertFunc('sinh')">sinh</button>
+      <button class="btn sci-fn" onclick="insertFunc('cosh')">cosh</button>
+      <button class="btn sci-fn" onclick="insertFunc('tanh')">tanh</button>
+      <button class="btn sci-fn" onclick="insertFunc('deg2rad')">→rad</button>
+    </div>
+
+    <div class="sci-section-label">Logaritma & Eksponen</div>
+    <div class="grid grid-5 mb">
+      <button class="btn sci-fn" onclick="insertFunc('log')">log</button>
+      <button class="btn sci-fn" onclick="insertFunc('log2')">log₂</button>
+      <button class="btn sci-fn" onclick="insertFunc('ln')">ln</button>
+      <button class="btn sci-fn" onclick="insertFunc('exp10')">10ˣ</button>
+      <button class="btn sci-fn" onclick="insertFunc('expe')">eˣ</button>
+    </div>
+
+    <div class="sci-section-label">Pangkat & Akar</div>
+    <div class="grid grid-5 mb">
+      <button class="btn sci-fn" onclick="insertFunc('sq')">x²</button>
+      <button class="btn sci-fn" onclick="insertFunc('cube')">x³</button>
+      <button class="btn sci-fn" onclick="appendExpr('^')">xʸ</button>
+      <button class="btn sci-fn" onclick="insertFunc('sqrt')">√x</button>
+      <button class="btn sci-fn" onclick="insertFunc('cbrt')">∛x</button>
+    </div>
+
+    <div class="sci-section-label">Lainnya</div>
+    <div class="grid grid-5 mb-lg">
+      <button class="btn sci-fn" onclick="insertFunc('inv')">1/x</button>
+      <button class="btn sci-fn" onclick="insertFunc('abs')">|x|</button>
+      <button class="btn sci-fn" onclick="insertFunc('fact')">n!</button>
+      <button class="btn sci-fn" onclick="appendExpr('π')">π</button>
+      <button class="btn sci-fn" onclick="appendExpr('e')">e</button>
+    </div>
+  </div>
+
+  <!-- Main Keypad -->
+  <div class="grid grid-4">
+    <!-- Baris 1 -->
+    <button class="btn clear" onclick="clearAll()">AC</button>
+    <button class="btn clear" onclick="delLast()">⌫</button>
+    <button class="btn op"    onclick="appendExpr('(')"> ( </button>
+    <button class="btn op"    onclick="appendExpr(')')"> ) </button>
+
+    <!-- Baris 2 -->
+    <button class="btn op"  onclick="appendExpr('%')">%</button>
+    <button class="btn op"  onclick="appendExpr('^')">xʸ</button>
+    <button class="btn op"  onclick="appendExpr('÷')">÷</button>
+    <button class="btn op"  onclick="appendExpr('×')">×</button>
+
+    <!-- Baris 3 -->
+    <button class="btn num" onclick="appendExpr('7')">7</button>
+    <button class="btn num" onclick="appendExpr('8')">8</button>
+    <button class="btn num" onclick="appendExpr('9')">9</button>
+    <button class="btn op"  onclick="appendExpr('−')">−</button>
+
+    <!-- Baris 4 -->
+    <button class="btn num" onclick="appendExpr('4')">4</button>
+    <button class="btn num" onclick="appendExpr('5')">5</button>
+    <button class="btn num" onclick="appendExpr('6')">6</button>
+    <button class="btn op"  onclick="appendExpr('+')">+</button>
+
+    <!-- Baris 5 -->
+    <button class="btn num" onclick="appendExpr('1')">1</button>
+    <button class="btn num" onclick="appendExpr('2')">2</button>
+    <button class="btn num" onclick="appendExpr('3')">3</button>
+    <button class="btn eq"  onclick="calculate()" style="grid-row: span 2">=</button>
+
+    <!-- Baris 6 -->
+    <button class="btn num zero" onclick="appendExpr('0')">0</button>
+    <button class="btn num"      onclick="appendExpr('.')">.</button>
+  </div>
+
+  <!-- History -->
+  <div class="history-wrap" id="hist-wrap">
+    <div class="history-empty">Riwayat perhitungan akan muncul di sini</div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
